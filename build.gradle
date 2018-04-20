@@ -1,0 +1,6 @@
+def distFolder = new File(project("frontend").projectDir,"dist")
+project("backend") {
+    apply plugin: "groovy"
+    sourceSets.main.resources.srcDir distFolder
+}
+tasks.getByPath(":backend:processResources").dependsOn(":frontend:build")

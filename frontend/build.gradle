@@ -1,0 +1,12 @@
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+// plugins {
+//   id "com.liferay.node" version "4.3.3"
+// }
+
+project.extensions.node.download=false
+task build
+
+build.dependsOn "npm_run_build"//moowok
+//build.dependsOn "npmRunBuild"//liferay

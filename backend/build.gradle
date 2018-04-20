@@ -1,0 +1,53 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-jooq')
+	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile('org.springframework.boot:spring-boot-starter-security')
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.2.RELEASE'
+    compile('org.springframework.boot:spring-boot-starter-validation')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.retry:spring-retry')
+	compile('org.springframework.session:spring-session-jdbc')
+	compile('org.codehaus.groovy:groovy')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('org.apache.derby:derby')
+	runtime('org.hsqldb:hsqldb')
+    runtime('com.h2database:h2')
+	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
+	compileOnly('org.projectlombok:lombok')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
+}
